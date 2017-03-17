@@ -1,0 +1,39 @@
+{
+  "name": "datavis",
+  "authors": [
+    "niwantha <eniwantha@gmail.com>"
+  ],
+  "description": "data visulization tool",
+  "main": "index.html",
+  "keywords": [
+    "angular",
+    "rest"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.6.3",
+    "angular-material": "^1.1.1",
+    "angular-route": "^1.6.0",
+    "angular-cookies": "^1.6.0",
+    "angular-resource": "^1.6.0",
+    "jquery": "^3.1.1",
+    "angular-bootstrap": "^2.3.0",
+    "bootstrap": "^3.3.7",
+    "angular-ui-router": "^0.3.2",
+    "font-awesome": "^4.7.0",
+    "font-awesome-animation": "^0.0.9",
+    "wow": "wowjs#^1.1.2",
+    "parallax.js": "^1.4.2",
+    "owl.carousel": "^2.2.1",
+    "d3": "^4.7.2"
+  }
+}

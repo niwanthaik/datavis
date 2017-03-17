@@ -1,0 +1,22 @@
+<div ng-controller="registerCtrl">
+<div class="form-page">
+  <div class="form">
+    <form class="register-form">
+      <input required="" type="text" placeholder="user name" ng-model="userName"/>
+      <input required="" type="password" placeholder="password" ng-model="password"/>
+      <input required="" type="password" placeholder="confirm password" ng-model="confirmPassword"/>
+      <input required="" type="email" placeholder="email address" ng-model="email"/>
+      <input required="" type="text" placeholder="country" ng-model="country"/>
+      <input required="" type="text" placeholder="What is your pet's name?" ng-model="question1"/>
+      <input required="" type="text" placeholder="What is your first class teacher's name?" ng-model="question2"/>
+      Choose your role : 
+      <select ng-model="role" required="">
+            <option>Role_Admin</option>
+            <option>Role_User</option>
+      </select> <br/><br/>
+      <button type="submit" ng-click="register()">register</button>
+      <p class="message">Already registered? <a href="#/">Sign In</a></p>
+    </form>
+  </div>
+</div>
+</div>

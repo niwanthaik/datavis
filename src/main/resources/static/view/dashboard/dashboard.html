@@ -1,0 +1,193 @@
+<div class="container" ng-controller="dashboardCtrl">
+	<div class="section-title">
+		<h3>Dashboard</h3>
+                <hr>
+	</div>
+
+<div class="chart-settings" ng-controller="dashboardCtrl">
+
+<div layout="column" ng-cloak="" class="sidenavdemoCustomSidenav">
+
+  <section layout="row" flex="">
+
+    <md-sidenav class="md-sidenav-left" md-component-id="left" md-disable-backdrop="" md-whiteframe="4">
+
+      <!--<md-toolbar class="md-theme-indigo">
+	<div class="row">
+        <h1 class="md-toolbar-tools">Chart Settings</h1>
+	<md-button class="md-icon-button" ng-click="toggleLeft()" class="md-accent"><span class="glyphicon glyphicon-remove"></span>
+        </md-button>
+	</div>
+      </md-toolbar>-->
+    <md-toolbar class="md-theme-indigo">
+      <div class="md-toolbar-tools">
+        <h1 class="md-toolbar-tools">Chart Settings</h1>
+        <md-button class="md-icon-button" ng-click="toggleLeft()"><span class="glyphicon glyphicon-remove"></span>
+        </md-button>
+      </div>
+    </md-toolbar>
+
+      <md-content layout-margin="" class="sideNavContent">
+	<table class="settings">
+	<!--<tr><td rowspan="3">Time Period<td></tr>-->
+	<tr>		
+		<td>Date From :</td> 
+		<td><md-datepicker required="" ng-model="dateFrom" md-current-view="year" md-placeholder="Enter date"></md-datepicker></td>
+	</tr>
+	<tr>
+		<td>Date To :</td> 
+		<td><md-datepicker required="" ng-model="dateTo" md-current-view="year" md-placeholder="Enter date"></md-datepicker></td>
+	</tr>
+	<tr>
+		<td>Parameter 1 :</td>
+		<td><select required="" ng-model="parameter1">
+			<option>PNR</option>
+			<option>Booking Created Date</option>
+			<option>Currency Code</option>
+			<option>Sales Channel</option>
+			<option>Agent Name</option>
+			<option>User Name</option>
+			<option>Contact Phone</option>
+			<option>Contact Email</option>
+			<option>Booking Notes</option>
+			<option>PAX Type</option>
+			<option>Title</option>
+			<option>First Name</option>
+			<option>Last Name</option>
+			<option>Date of Birth</option>
+			<option>Nationality</option>
+			<option>Gender</option>
+			<option>Passport Number</option></select></td>
+	</tr>
+	<tr>
+		<td>Parameter 2 :</td>
+		<td><select required="" ng-model="parameter2">
+			<option>PNR</option>
+			<option>Booking Created Date</option>
+			<option>Currency Code</option>
+			<option>Sales Channel</option>
+			<option>Agent Name</option>
+			<option>User Name</option>
+			<option>Contact Phone</option>
+			<option>Contact Email</option>
+			<option>Booking Notes</option>
+			<option>PAX Type</option>
+			<option>Title</option>
+			<option>First Name</option>
+			<option>Last Name</option>
+			<option>Date of Birth</option>
+			<option>Nationality</option>
+			<option>Gender</option>
+			<option>Passport Number</option></select></td>
+	</tr>
+	<tr>
+		<td>Country :</td> 
+		<td><select  ng-model="country">
+			<option>SriLanka</option>
+			<option>US</option>
+			<option>UK</option>
+			<option>Japan</option>
+			<option>China</option></select></td>
+	</tr>
+	<tr>
+		<td>Cabin Class :</td> 
+		<td><select  ng-model="cabinClass">
+			<option>First Class</option>
+			<option>Business Class</option>
+			<option>Economy Class</option></select></td>
+	</tr>
+	<tr>
+		<td>Graph Type :</td> 
+		<td><select required="" ng-model="graphType">
+			<option>Bar Chart</option>
+			<option>Pie Chart</option>
+			<option>Bubble Chart</option>
+			<option>Line Chart</option></select></td>
+	</tr>
+	<tr>
+		<!--<td colspan="2"><md-button ng-click="toggleLeft()" class="md-accent">Close this Sidenav</md-button></td>-->
+		<td colspan="2"><button type="submit" ng-click="settings()" class="btn btn-primary my-btn">submit</button></td>
+	</tr>      
+	</table>
+      </md-content>
+
+    </md-sidenav>
+
+        <div>
+          <md-button ng-click="toggleLeft()" class="md-raised">
+            Chart Settings
+          </md-button>
+        </div>
+
+  </section>
+</div>
+
+<!--<div class="chart-settings">
+
+<div ng-controller="AppCtrl" layout="column" ng-cloak="" class="sidenavdemoCustomSidenav">
+
+  <section layout="row" flex="">
+
+    <md-sidenav class="md-sidenav-left" md-component-id="left" md-disable-backdrop="" md-whiteframe="4">
+
+      <md-toolbar class="md-theme-indigo">
+        <h1 class="md-toolbar-tools">Chart Settings</h1>
+      </md-toolbar>
+
+      <md-content layout-margin="" class="sideNavContent">
+
+	<lable>Time Period</lable> <br>
+	<lable>From :</lable> <md-datepicker ng-model="dateFrom" md-current-view="year" md-placeholder="Enter date"></md-datepicker> <br>
+	<lable>To :</lable> <md-datepicker ng-model="dateTo" md-current-view="year" md-placeholder="Enter date"></md-datepicker> <br>
+	<lable>Catogorised By :</lable> 
+		<select><option>Dately</option>
+			<option>Weekly</option>
+			<option>Monthly</option>
+			<option>Yearly</option></select> <br>
+
+        <md-button ng-click="toggleLeft()" class="md-accent">
+          Close this Sidenav
+        </md-button>
+      </md-content>
+
+    </md-sidenav>
+
+        <div>
+          <md-button ng-click="toggleLeft()" class="md-raised">
+            Chart Settings
+          </md-button>
+        </div>
+
+  </section>
+</div>-->
+
+            <div class="space"></div>
+
+            <div class="row">
+                <div class="col-md-4">
+                </div>
+
+                <div class="col-md-4">
+                    <img src="/publics/images/02.jpg" class="img-responsive">
+                </div>
+
+                <div class="col-md-4">
+                    <img src="/publics/images/03.jpg" class="img-responsive">
+                </div>
+            </div>
+
+            <div class="row toppadding">
+                <div class="col-md-4">
+                    <img src="/publics/images/04.jpg" class="img-responsive">
+                </div>
+
+                <div class="col-md-4">
+                    <img src="/publics/images/05.jpg" class="img-responsive">
+                </div>
+
+                <div class="col-md-4">
+                    <img src="/publics/images/06.jpg" class="img-responsive">
+                </div>
+            </div>
+
+        </div>

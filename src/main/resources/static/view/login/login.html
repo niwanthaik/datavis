@@ -1,0 +1,19 @@
+<div ng-controller="loginCtrl">
+<div class="form-page">
+  <div class="form">
+    <form class="login-form" id="login">
+      <input required="" type="text" placeholder="user name" ng-model="userName"/>
+      <input required="" type="password" placeholder="password" ng-model="password"/>
+      <p class="message"><a href="#/forgot">Forgot your password</a></p><br/>
+      <button type="submit" ng-click="login()">login</button>
+      <p class="message">Not registered? <a href="#/register">Create an account</a></p>
+    <!--<form class="register-form" id="register">
+      <input type="text" placeholder="name"/>
+      <input type="password" placeholder="password"/>
+      <input type="text" placeholder="email address"/>
+      <button>create</button>
+      <p class="message">Already registered? <a href="#login">Sign In</a></p>
+    </form>-->
+  </div>
+</div>
+</div>
