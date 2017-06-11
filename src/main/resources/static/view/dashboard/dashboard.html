@@ -1,193 +1,293 @@
-<div class="container" ng-controller="dashboardCtrl">
-	<div class="section-title">
-		<h3>Dashboard</h3>
-                <hr>
-	</div>
-
-<div class="chart-settings" ng-controller="dashboardCtrl">
-
-<div layout="column" ng-cloak="" class="sidenavdemoCustomSidenav">
-
-  <section layout="row" flex="">
-
-    <md-sidenav class="md-sidenav-left" md-component-id="left" md-disable-backdrop="" md-whiteframe="4">
-
-      <!--<md-toolbar class="md-theme-indigo">
-	<div class="row">
-        <h1 class="md-toolbar-tools">Chart Settings</h1>
-	<md-button class="md-icon-button" ng-click="toggleLeft()" class="md-accent"><span class="glyphicon glyphicon-remove"></span>
-        </md-button>
-	</div>
-      </md-toolbar>-->
-    <md-toolbar class="md-theme-indigo">
-      <div class="md-toolbar-tools">
-        <h1 class="md-toolbar-tools">Chart Settings</h1>
-        <md-button class="md-icon-button" ng-click="toggleLeft()"><span class="glyphicon glyphicon-remove"></span>
-        </md-button>
-      </div>
-    </md-toolbar>
-
-      <md-content layout-margin="" class="sideNavContent">
-	<table class="settings">
-	<!--<tr><td rowspan="3">Time Period<td></tr>-->
-	<tr>		
-		<td>Date From :</td> 
-		<td><md-datepicker required="" ng-model="dateFrom" md-current-view="year" md-placeholder="Enter date"></md-datepicker></td>
-	</tr>
-	<tr>
-		<td>Date To :</td> 
-		<td><md-datepicker required="" ng-model="dateTo" md-current-view="year" md-placeholder="Enter date"></md-datepicker></td>
-	</tr>
-	<tr>
-		<td>Parameter 1 :</td>
-		<td><select required="" ng-model="parameter1">
-			<option>PNR</option>
-			<option>Booking Created Date</option>
-			<option>Currency Code</option>
-			<option>Sales Channel</option>
-			<option>Agent Name</option>
-			<option>User Name</option>
-			<option>Contact Phone</option>
-			<option>Contact Email</option>
-			<option>Booking Notes</option>
-			<option>PAX Type</option>
-			<option>Title</option>
-			<option>First Name</option>
-			<option>Last Name</option>
-			<option>Date of Birth</option>
-			<option>Nationality</option>
-			<option>Gender</option>
-			<option>Passport Number</option></select></td>
-	</tr>
-	<tr>
-		<td>Parameter 2 :</td>
-		<td><select required="" ng-model="parameter2">
-			<option>PNR</option>
-			<option>Booking Created Date</option>
-			<option>Currency Code</option>
-			<option>Sales Channel</option>
-			<option>Agent Name</option>
-			<option>User Name</option>
-			<option>Contact Phone</option>
-			<option>Contact Email</option>
-			<option>Booking Notes</option>
-			<option>PAX Type</option>
-			<option>Title</option>
-			<option>First Name</option>
-			<option>Last Name</option>
-			<option>Date of Birth</option>
-			<option>Nationality</option>
-			<option>Gender</option>
-			<option>Passport Number</option></select></td>
-	</tr>
-	<tr>
-		<td>Country :</td> 
-		<td><select  ng-model="country">
-			<option>SriLanka</option>
-			<option>US</option>
-			<option>UK</option>
-			<option>Japan</option>
-			<option>China</option></select></td>
-	</tr>
-	<tr>
-		<td>Cabin Class :</td> 
-		<td><select  ng-model="cabinClass">
-			<option>First Class</option>
-			<option>Business Class</option>
-			<option>Economy Class</option></select></td>
-	</tr>
-	<tr>
-		<td>Graph Type :</td> 
-		<td><select required="" ng-model="graphType">
-			<option>Bar Chart</option>
-			<option>Pie Chart</option>
-			<option>Bubble Chart</option>
-			<option>Line Chart</option></select></td>
-	</tr>
-	<tr>
-		<!--<td colspan="2"><md-button ng-click="toggleLeft()" class="md-accent">Close this Sidenav</md-button></td>-->
-		<td colspan="2"><button type="submit" ng-click="settings()" class="btn btn-primary my-btn">submit</button></td>
-	</tr>      
-	</table>
-      </md-content>
-
-    </md-sidenav>
-
-        <div>
-          <md-button ng-click="toggleLeft()" class="md-raised">
-            Chart Settings
-          </md-button>
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand"><i>AirLine Data Manager</i></a>
         </div>
+        <ul class="nav navbar-nav">
+            <!--<li class="active"><a href="#">Home</a></li>-->
+            <li>
+                    <md-button ng-click="toggleLeft()" class="md-raised">
+                        Chart Settings
+                    </md-button>
+            </li>
+            <li ng-show="val">
+                <md-button class="md-raised"
+                        type="file"
+                        ngf-select="uploadFiles($file, $invalidFiles)"
+                        accept="pdf/*" ngf-max-height="1000" ngf-max-size="100MB">Select File
+                </md-button>
+            </li>
+            <li>
+                <div style="font:smaller">
+	    <span class="progress" ng-show="f.progress >= 0">
+	        <div style="width:{{f.progress}}%" ng-bind="f.progress + '%'"></div>
+	     </span>
+                </div>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <!--<li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>-->
+            <li><a href="#"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+        </ul>
+    </div>
+</nav>
 
-  </section>
+<div class="row">
+  <div class="col-md-8"></div>
+    <div class="col-md-4">
+
+    </div>
 </div>
 
-<!--<div class="chart-settings">
 
-<div ng-controller="AppCtrl" layout="column" ng-cloak="" class="sidenavdemoCustomSidenav">
+<canvas id="bardrw"  width="918" height="456" style="    left: 100px;    top: 100px;    z-index: 1;
+    position: absolute;"> chart-series="series"
+</canvas>
 
-  <section layout="row" flex="">
 
-    <md-sidenav class="md-sidenav-left" md-component-id="left" md-disable-backdrop="" md-whiteframe="4">
 
-      <md-toolbar class="md-theme-indigo">
-        <h1 class="md-toolbar-tools">Chart Settings</h1>
-      </md-toolbar>
 
-      <md-content layout-margin="" class="sideNavContent">
+<div id="page-inner" ng-controller="dashboardCtrl">
+    <div class="chart-settings">
 
-	<lable>Time Period</lable> <br>
-	<lable>From :</lable> <md-datepicker ng-model="dateFrom" md-current-view="year" md-placeholder="Enter date"></md-datepicker> <br>
-	<lable>To :</lable> <md-datepicker ng-model="dateTo" md-current-view="year" md-placeholder="Enter date"></md-datepicker> <br>
-	<lable>Catogorised By :</lable> 
-		<select><option>Dately</option>
-			<option>Weekly</option>
-			<option>Monthly</option>
-			<option>Yearly</option></select> <br>
+        <div layout="column" ng-cloak="" class="sidenavdemoCustomSidenav">
 
-        <md-button ng-click="toggleLeft()" class="md-accent">
-          Close this Sidenav
-        </md-button>
-      </md-content>
+            <section layout="row" flex="">
 
-    </md-sidenav>
+                <md-sidenav class="md-sidenav-left" md-component-id="left" md-disable-backdrop="" md-whiteframe="3">
 
-        <div>
-          <md-button ng-click="toggleLeft()" class="md-raised">
-            Chart Settings
-          </md-button>
+                    <md-toolbar class="md-theme-indigo">
+                        <div class="md-toolbar-tools">
+                            <h1 class="md-toolbar-tools">Chart Settings</h1>
+                            <md-button class="md-icon-button" ng-click="toggleLeft()"><span
+                                    class="glyphicon glyphicon-remove"></span>
+                            </md-button>
+                        </div>
+                    </md-toolbar>
+
+                    <md-content layout-margin="" class="sideNavContent">
+                        <table class="settings">
+                            <!--<tr><td rowspan="3">Time Period<td></tr>-->
+                            <tr>
+                                <td>Date From :</td>
+                                <td>
+                                    <md-datepicker required="" ng-model="dateFrom" md-current-view="year"
+                                                   md-placeholder="Enter date"></md-datepicker>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Date To :</td>
+                                <td>
+                                    <md-datepicker required="" ng-model="dateTo" md-current-view="year"
+                                                   md-placeholder="Enter date"></md-datepicker>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Parameter 1 :</td>
+                                <td><select required="" ng-model="parameter1">
+                                    <option>Depature airport</option>
+                                    <option>Booking Created Date</option>
+                                    <option>Currency Code</option>
+                                    <option>Sales Channel</option>
+                                    <option>Agent Name</option>
+                                    <option>User Name</option>
+                                    <option>Contact Phone</option>
+                                    <option>Contact Email</option>
+                                    <option>Booking Notes</option>
+                                    <option>PAX Type</option>
+                                    <option>Title</option>
+                                    <option>First Name</option>
+                                    <option>Last Name</option>
+                                    <option>Date of Birth</option>
+                                    <option>Nationality</option>
+                                    <option>Gender</option>
+                                    <option>Passport Number</option>
+                                </select></td>
+                            </tr>
+                            <tr>
+                                <td>Parameter 2 :</td>
+                                <td><select required="" ng-model="parameter2">
+                                    <option>PNR</option>
+                                    <option>Flight number</option>
+                                    <option>Currency Code</option>
+                                    <option>Sales Channel</option>
+                                    <option>Agent Name</option>
+                                    <option>User Name</option>
+                                    <option>Contact Phone</option>
+                                    <option>Contact Email</option>
+                                    <option>Booking Notes</option>
+                                    <option>PAX Type</option>
+                                    <option>Title</option>
+                                    <option>First Name</option>
+                                    <option>Last Name</option>
+                                    <option>Date of Birth</option>
+                                    <option>Nationality</option>
+                                    <option>Gender</option>
+                                    <option>Passport Number</option>
+                                </select></td>
+                            </tr>
+                            <!--<tr>-->
+                                <!--<td>Country :</td>-->
+                                <!--<td><select ng-model="country">-->
+                                    <!--<option>SriLanka</option>-->
+                                    <!--<option>US</option>-->
+                                    <!--<option>UK</option>-->
+                                    <!--<option>Japan</option>-->
+                                    <!--<option>China</option>-->
+                                <!--</select></td>-->
+                            <!--</tr>-->
+                            <!--<tr>-->
+                                <!--<td>Cabin Class :</td>-->
+                                <!--<td><select ng-model="cabinClass">-->
+                                    <!--<option>First Class</option>-->
+                                    <!--<option>Business Class</option>-->
+                                    <!--<option>Economy Class</option>-->
+                                <!--</select></td>-->
+                            <!--</tr>-->
+                            <tr>
+                                <td>Graph Type :</td>
+                                <td><select required="" ng-model="graphType">
+                                    <option>Bar Chart</option>
+                                    <option>Pie Chart</option>
+                                    <option>Bubble Chart</option>
+                                    <option>Line Chart</option>
+                                    <option>Donut</option>
+                                </select></td>
+                            </tr>
+                            <tr>
+                                <!--<td colspan="2"><md-button ng-click="toggleLeft()" class="md-accent">Close this Sidenav</md-button></td>-->
+                                <td colspan="2">
+                                    <button type="submit" ng-click="settings()" class="btn btn-primary my-btn">submit
+                                    </button>
+                                </td>
+                            </tr>
+                        </table>
+                    </md-content>
+
+                </md-sidenav>
+
+            </section>
         </div>
+    </div>
 
-  </section>
-</div>-->
-
-            <div class="space"></div>
-
-            <div class="row">
-                <div class="col-md-4">
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-7 col-sm-12 col-xs-12">
+            <div class="panel panel-default" ng-init="selectChart()">
+                <div class="panel-heading">
+                    {{graphType}}
+                </div>
+                <div class="panel-body">
+                    <img src="../publics/images/17.png" ng-if="chartCategory2==2" width="700" height="450">
                 </div>
 
-                <div class="col-md-4">
-                    <img src="/publics/images/02.jpg" class="img-responsive">
+            <div id="barChart" class="panel-body" ng-model="chartCategory1" ng-show="(chartCategory1==1)">
+
+            <!--<div style="position: relative;">-->
+                <canvas id="bar" class="chart chart-bar" width="918" height="450"
+                        chart-data="data1" chart-labels="labels"> chart-series="series"
+                </canvas>
+
+                <!--</div>-->
+
+
+            </div>
+                <div style="background-color: slategrey">
+
+                    <canvas id="img123" width="918" height="456" style="display:none;  left: 0; top: 0; z-index: 0" >your browser does not support HTML5 canvas tag.</canvas>
                 </div>
 
-                <div class="col-md-4">
-                    <img src="/publics/images/03.jpg" class="img-responsive">
+                <!--<div id="pieChart" class="panel-body" ng-model="chartCategory2" ng-if="chartCategory2==2">-->
+                    <!--<div>-->
+                        <!--<canvas id="pie" class="chart chart-pie"-->
+                            <!--chart-data="data1" chart-labels="labels" chart-options="options">-->
+                        <!--</canvas>-->
+                     <!--</div>-->
+                <!--</div>-->
+                <div id="bubbleChart" class="panel-body" ng-model="chartCategory3" ng-if="chartCategory3==3">
+                    bubble chart
+                </div>
+                <div id="lineChart" class="panel-body" ng-model="chartCategory4" ng-if="chartCategory4==4">
+
+                    <canvas id="line" class="chart chart-line" width="918" height="450"
+                            chart-data="data1" chart-labels="labels" chart-series="series" chart-options="options" chart-dataset-override="datasetOverride" chart-click="onClick">
+                    </canvas >
+
+
+                </div>
+                <div id="donut" class="panel-body" ng-model="chartCategory5" ng-if="chartCategory5==5">
+
+                    <canvas id="doughnut" class="chart chart-doughnut" width="918" height="450"
+                      chart-data="data1" chart-labels="labels">
+                    </canvas>
+
+
+
                 </div>
             </div>
+        </div>
 
-            <div class="row toppadding">
-                <div class="col-md-4">
-                    <img src="/publics/images/04.jpg" class="img-responsive">
+        <div class="col-sm-1"></div>
+        <div class="col-md-3 col-sm-12 col-xs-12 ">
+            <div ng-show="showTool">
+                    <p>
+                    <h2>Chart description</h2>
+                    <b>From {{dateFrom}} to {{dateTo}}, {{parameter1}} against {{parameter2}} on {{graphType}}.</b>
+                    </p>
+                <!--<div>-->
+                <!--<table>-->
+                <!--<tr ng-repeat="label in labels">-->
+                <!--<th>{{label}}</th>-->
+                <!--</tr>-->
+                <!--</table>-->
+                <!--</div>-->
+                <!--<div>-->
+                <!--<table>-->
+                <!--<tr ng-repeat="value in values">-->
+                <!--<th>{{value}}</th>-->
+                <!--</tr>-->
+                <!--</table>-->
+                <!--</div>-->
+            </div>
+        </div>
+
+
+        <div class="col-sm-1"></div>
+        <div class="col-md-3 col-sm-12 col-xs-12 ">
+            <div class="row" ng-show="showTool">
+
+                <div class="col-md-9 col-sm-12 col-xs-12">
+
+                    <div class="panel panel-default" >
+                        <div class="panel-heading">
+                            Write a comment
+                        </div>
+
+                        <div class="panel-body">
+                            <div class="input-group">
+                                <input  type="button" class="form-control" value="Edit Chart" ng-click="initDrw()">
+                                <input  type="button" class="form-control" value="Clear Chart" ng-click="clearRec()">
+                            </div>
+                            <div class="input-group">Send msg to
+                                <select ng-model="uname" ng-options="x for x in unames" >
+                                </select>
+                            </div>
+                            <form role="form">
+                                <textarea class="form-control" rows="1"  ng-model="topic" required placeholder="Enter topic"></textarea>
+                                <textarea class="form-control" rows="4"  ng-model="des" required placeholder="Enter description"></textarea>
+                                <button ng-click="sendMessage()" class="btn btn-success">Submit</button>
+                            </form>
+
+                        </div>
+                        <a href="/index.html#!/message " class="btn btn-success">view Messages</a> </div>
+
                 </div>
 
-                <div class="col-md-4">
-                    <img src="/publics/images/05.jpg" class="img-responsive">
-                </div>
 
-                <div class="col-md-4">
-                    <img src="/publics/images/06.jpg" class="img-responsive">
-                </div>
             </div>
 
+
         </div>
+
+    </div>
+</div>

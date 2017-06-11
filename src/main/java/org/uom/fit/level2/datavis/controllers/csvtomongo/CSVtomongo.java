@@ -15,7 +15,7 @@ public class CSVtomongo {
     public String ImportDB(String importPath, String filePath){
         Runtime r = Runtime.getRuntime();
         Process p = null;
-        String command = "mongoimport --db datarepo --collection rawdata --type csv --file /home/asiri/Downloads/testxlproject_real.csv --headerline" ;
+        String command = "mongoimport --db datarepo --collection rawdata --type csv --file /home/charith/Downloads/testxlproject_real.csv --headerline" ;
         try {
             p = r.exec(command);
             System.out.println("Reading csv into Database");

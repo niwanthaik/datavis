@@ -1,18 +1,13 @@
 package org.uom.fit.level2.datavis.model.login;
 
 
-import org.hibernate.validator.constraints.Email;
-import org.hibernate.validator.constraints.Length;
-import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-import javax.persistence.*;
-import java.util.Set;
-
-@Entity
+import javax.persistence.Id;
+@Document(collection = "user")
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private String id;
 
     private String userName;
 
@@ -22,18 +17,23 @@ public class User {
 
     private String country;
 
-/*    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinTable(name = "role", joinColumns = @JoinColumn(name = "id"), inverseJoinColumns = @JoinColumn(name = "roleId"))
-    private Set<Roler> roles;*/
+    private String question1;
 
-    private String userType;
+    private  String question2;
+
+    private Role role;
+
+    private String rolename;
 
 
-    public Long getId() {
+
+    public User(){}
+
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -55,7 +55,7 @@ public class User {
         return password;
     }
 
-    public void setPassiword(String password) {
+    public void setPassword(String password) {
         this.password = password;
     }
 
@@ -67,18 +67,35 @@ public class User {
         this.country = country;
     }
 
-    public String getUserType() {
-        return userType;
+    public String getQuestion2() {
+        return question2;
     }
 
-    public void setUserType(String userType) {this.userType = userType;}
-
-  /* public Set<Roler> getRoles() {
-        return roles;
+    public void setQuestion2(String question2) {
+        this.question2 = question2;
     }
 
-    public void setRoles(Set<Roler> roles) {
-        this.roles = roles;
-    }*/
+    public String getQuestion1() {
+        return question1;
+    }
 
+    public void setQuestion1(String question1) {
+        this.question1 = question1;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+    public String getRolename() {
+        return rolename;
+    }
+
+    public void setRolename(String rolename) {
+        this.rolename = rolename;
+    }
 }

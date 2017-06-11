@@ -7,8 +7,8 @@ angular.module('datavis.config',['ngRoute','ngMaterial','ngMessages'])
 
     $routeProvider
         .when('/', {
-        templateUrl: 'view/login/login.html',
-        controller: 'loginCtrl'
+        templateUrl: 'view/main/main.html',
+        controller: 'mainCtrl'
 
     })
         .when('/register', {
@@ -22,8 +22,11 @@ angular.module('datavis.config',['ngRoute','ngMaterial','ngMessages'])
     }) .when('/dashboard', {
         templateUrl: 'view/dashboard/dashboard.html',
         controller: 'dashboardCtrl'
-    })
-            .otherwise({
+    }).when('/login', {
+            templateUrl: 'view/login/login.html',
+            controller: 'loginCtrl'
+        })
+        .otherwise({
         redirectTo: '/'
     })
 }]);

@@ -19,8 +19,10 @@ public class PassengersPerCabinClass {
 
         DBCollection collection = db.getCollection("rawdata");
 
-        DBObject group = new BasicDBObject("$group", new BasicDBObject("_id", "$CABIN_CLASS")
-                .append("passengers per cabin class", new BasicDBObject("$sum", 1)));
+        DBObject group = new BasicDBObject("$group",
+                new BasicDBObject("_id", "$CABIN_CLASS")
+                .append("passengers per cabin class",
+                        new BasicDBObject("$sum", 1)));
 
         //DBObject sort = new BasicDBObject("$sort", new BasicDBObject("amount", 1));
 

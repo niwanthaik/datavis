@@ -7,8 +7,8 @@
       <input required="" type="text" placeholder="What is your pet's name?" ng-model="question1"/>
       <input required="" type="text" placeholder="What is your first class teacher's name?" ng-model="question2"/>
       <button type="submit" ng-click="verify()">verify</button>
-      <p class="message">Do you want to <a href="#/register">create a new accont</a>?</p>
-      <p class="message">Do you want to <a href="#/">go back</a>?</p>
+      <p class="message">Do you want to <a ng-click="registerDialog()">create a new accont</a>?</p>
+      <p class="message">Do you want to <a ng-click="loginPage()">go back</a>?</p>
     </form>
   </div>
 </div>

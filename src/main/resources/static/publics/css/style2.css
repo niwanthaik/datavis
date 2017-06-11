@@ -1,8 +1,8 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
 .form-page {
-  width: 360px;
-  padding: 8% 0 0;
+  /*width: 360px;*/
+  /*padding: 8% 0 0;*/
   margin: auto;
 }
 .form {
@@ -10,7 +10,7 @@
   z-index: 1;
   background: #FFFFFF;
   max-width: 360px;
-  margin: 0 auto 100px;
+  /*margin: 0 auto 100px;*/
   padding: 45px;
   text-align: center;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
@@ -112,4 +112,37 @@ body {
 
 .sideNavContent {
  background: #cecaca;
+}
+.donut-chart{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+.axis path, .axis line {
+  fill: none;
+  stroke: black;
+  shape-rendering: crispEdges;
+}
+.axis path{
+  fill: none;
+  stroke: none;
+}
+.bar {
+  fill: steelblue;
+}
+
+.md-whiteframe-1dp {
+  background: #f8ffd6;
+  /*margin-right: 30px;*/
+  height: 100px;
+}
+
+/*.upload {*/
+    /*padding-right: 10%;*/
+/*}*/
+
+.md-fab {
+    height: 30px;
+    width: 30px;
 }

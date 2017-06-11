@@ -18,9 +18,9 @@ public class ExcelToCsv {
 
     @RequestMapping(value="/exceltocsv" )
     public String excelTocsv() {
-        File inputFile = new File("/home/niwantha/Downloads/sample.xlsx");
-        File outputFile = new File("/home/niwantha/Downloads/sample.csv");
-        xlsx(inputFile, outputFile);
+      //  File inputFile = new File("/home/niwantha/Downloads/sample.xlsx");
+      //  File outputFile = new File("/home/niwantha/Downloads/sample.csv");
+     //   xlsx(inputFile, outputFile);
         return"succes2";
     }
 

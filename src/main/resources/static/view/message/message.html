@@ -1,0 +1,30 @@
+<div ng-controller="messageCtrl">
+    <div class="topnav" >
+    <h2>Different topics</h2>
+        <li ng-repeat="a in topics" width="80" height="30" >
+            <div height="30" ng-click="loadThread(a)">{{a[0].message}} </div>
+        </li>
+    </div>
+    <div>
+        <h2>Chat Thread - {{msgs[0].message}}</h2>
+        <img src={{msgs[0].imageData}}>
+        <div ng-repeat="b in msgs"  >
+            <div>
+                <h4><i>User Name:</i> {{b.senderName}}</h4>
+            </div>
+            <div>
+                <h4><i>Message description:</i>{{b.discription}}</h4>
+            </div>
+        </div>
+        <div>
+            <div class="input-group">Send msg to
+            <select ng-model="uname" ng-options="x for x in unames" >
+            </select>
+        </div>
+            <textarea class="form-control" rows="4"  ng-model="des" required placeholder="Enter description"></textarea>
+            <button ng-click="addMessage(msgs[0].message,msgs[0].imageData)" class="btn btn-success">Submit</button>
+        </div>
+    </div>
+
+
+</div>

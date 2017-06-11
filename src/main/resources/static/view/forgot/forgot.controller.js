@@ -1,46 +1,55 @@
 angular.module('datavis.controllers')
-	.controller('forgotCtrl', function($scope, $mdDialog,$timeout, $mdSidenav,$http,$location) {
+	.controller('forgotCtrl', function($scope, $mdDialog,$timeout, $mdSidenav,$http,$location,DatavisServices3) {
 
-    $scope.verifyLogin =[];
-    $scope.a = false;
+        $scope.a = false;
 
-    $scope.verify = function(){
-        $scope.userRegister.push({ 'userName':$scope.userName,
-			'email':$scope.email,
-			'question1':$scope.question1,
-			'question2':$scope.question2 
-	});
+        $scope.verify = function() {
+            $scope.a = true;
+            DatavisServices3.forgotServices( $scope.userName, $scope.email, $scope.question1, $scope.question2)
+                .then(forgotPrint)
+                .catch(forgotError)
+        };
+        function forgotPrint (message) {
+            if(message){
+                console.log("message",message);
 
-        var dataObj = {
-		userName : $scope.userName,
-		email : $scope.email,
-		question1 : $scope.question1,
-		question2 : $scope.question2
+                $scope.userName='';
+                $scope.email='';
+                $scope.question1='';
+                $scope.question2='';
+                $location.path("/dashboard");
+                $mdDialog.hide();
+
+            }else {
+
+                alert("Incorrect details");
+                $scope.userName='';
+                $scope.email='';
+                $scope.question1='';
+                $scope.question2='';
+
+                $location.path("/");
+            }
+
+        }
+
+        function forgotError (errorMessage) {
+            alert("Has an error");
+        }
+
+        $scope.registerDialog=function (){
+            $mdDialog.show({
+                templateUrl:'view/register/register.html',
+                clickOutsideToClose:true
+            });
+            $mdDialog.hide();
         };
 
-        $scope.a = true;
-
-        console.log(JSON.stringify(dataObj));
-        // console.log("tebbjabfjhl");
-
-        var res = $http.post('/forgot', dataObj);
-        res.success(function(data, status, headers, config) {
-            console.log(JSON.stringify(data));
-            $scope.message = data;
-        });
-        res.error(function(data, status, headers, config) {
-            alert( "failure message: " + JSON.stringify({data: data}));
-        });
-
-        $scope.userName='';
-        $scope.email='';
-	$scope.question1='';
-	$scope.question2='';
-
-    };
-
-    $scope.submit = function () {
-        console.log('test submit');
-    }
+        $scope.loginPage=function(){
+            $mdDialog.show({
+                templateUrl:'view/login/login.html',
+                clickOutsideToClose:true
+            })
+        }
 
 })

@@ -1,5 +1,5 @@
 angular .module('datavis.controllers')
-    .controller('registerCtrl', function($scope, $mdDialog,$timeout, $mdSidenav,$http,$location,DatavisServices) {
+    .controller('registerCtrl', function($scope, $mdDialog,$timeout, $mdSidenav,$http,$location,DatavisServices2) {
 
         $scope.a = false;
 
@@ -8,16 +8,17 @@ angular .module('datavis.controllers')
             $scope.a = true;
 
 
-            DatavisServices.registerServices( $scope.userName, $scope.password, $scope.confirmPassword, $scope.email, $scope.country, $scope.question1, $scope.question2, $scope.role)
+            DatavisServices2.registerServices( $scope.userName, $scope.password, $scope.confirmPassword, $scope.email, $scope.country, $scope.question1, $scope.question2, $scope.role)
                 .then(registerPrint)
                 .catch(registerError)
 
 
-
-
         };
+
         function registerPrint (message) {
-            if(message.get("register")){
+            if(message){
+                console.log("message",message);
+
                 $scope.userName='';
                 $scope.password='';
                 $scope.confirmPassword='';
@@ -27,7 +28,9 @@ angular .module('datavis.controllers')
                 $scope.question2='';
                 $scope.role='';
 
-                scope.$apply(function() { $location.path("/"); });
+                $location.path("/");
+                $mdDialog.hide();
+
 
             }else {
                 alert("Registration faild");
@@ -40,13 +43,20 @@ angular .module('datavis.controllers')
                 $scope.question2='';
                 $scope.role='';
 
-                scope.$apply(function() { $location.path("/register"); });
+                $location.path("/");
             }
 
         }
 
         function registerError (errorMessage) {
             alert("Has an error");
+        }
+
+        $scope.loginPage=function(){
+            $mdDialog.show({
+                templateUrl:'view/login/login.html',
+                clickOutsideToClose:true
+            })
         }
 
         /*$scope.submit = function () {

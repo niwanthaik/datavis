@@ -2,10 +2,19 @@
  * Created by niwantha on 3/12/17.
  */
 
-angular.module('datavis',[
+var app=angular.module('datavis',[
      'ngRoute',
+    'ngCookies',
+    'ngFileUpload',
+    'ngResource',
+    'chart.js',
+
+
     //add all controller
     'datavis.controllers',
+    //'ngFileUpload',
+    'myApp',
+
 
 
 
@@ -14,10 +23,4 @@ angular.module('datavis',[
 
     //add all services
     'datavis.services'
-
-    
-
-
-
-
-])
+]);
